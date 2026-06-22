@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sabor Capital · Restaurante</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-dark: #8b1a1a;
+            --red-warm: #a52a2a;
+            --red-light: #c0392b;
+            --black: #1a1a1a;
+            --beige: #f5efe6;
+            --beige-dark: #e8dccc;
+            --gold: #d4af37;
+            --gold-light: #e8c547;
+            --white: #ffffff;
+            --gray: #6b6b6b;
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            --shadow-light: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--beige);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--red-dark);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2.8rem auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .gold-line {
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0.5rem auto 2rem auto;
+            border-radius: 4px;
+        }
+
+        .badge-gold {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 50px;
+            margin-bottom: 0.6rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--red-dark);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(139, 26, 26, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--red-warm);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(139, 26, 26, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--red-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold:hover {
+            background: #dbb94a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp i {
+            margin-right: 10px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 26, 26, 0.98);
+            padding: 10px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        .logo i {
+            color: var(--gold);
+            margin-right: 6px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            position: relative;
+            padding: 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black) !important;
+            padding: 8px 24px !important;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: #dbb94a !important;
+            transform: scale(1.03);
+            color: var(--black) !important;
+        }
+
+        /* Hamburguesa */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 6px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: var(--gold);
+            border-radius: 4px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--black);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(139, 26, 26, 0.4) 100%),
+                url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+            transform: scale(1.02);
+            transition: transform 0.6s ease;
+        }
+
+        .hero:hover .hero-bg {
+            transform: scale(1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeUp 1.2s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 24px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content h1 .gold-text {
+            color: var(--gold);
+            display: inline-block;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 1.4vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 1rem auto 2.2rem auto;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-buttons .btn i {
+            margin-right: 10px;
+        }
+
+        /* ===== DESTACADOS ===== */
+        .featured {
+            background: var(--beige);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .dish-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            border: 1px solid rgba(139, 26, 26, 0.06);
+        }
+
+        .dish-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--gold);
+        }
+
+        .dish-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .dish-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .dish-info {
+            padding: 1.6rem 1.5rem 1.8rem;
+            text-align: center;
+        }
+
+        .dish-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--red-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .dish-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 300;
+            margin-bottom: 0.8rem;
+        }
+
+        .dish-info .price {
+            display: inline-block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .dish-info .btn-order {
+            background: var(--red-dark);
+            color: var(--white);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dish-info .btn-order:hover {
+            background: var(--red-warm);
+            transform: scale(1.05);
+        }
+
+        /* ===== CARRUSEL ===== */
+        .carousel-section {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .carousel-section .section-title {
+            color: var(--gold);
+        }
+
+        .carousel-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 26, 26, 0.75);
+            backdrop-filter: blur(6px);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 16px;
+        }
+
+        .carousel-btn.next {
+            right: 16px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .carousel-dots span.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .carousel-dots span:hover {
+            background: var(--gold-light);
+        }
+
+        /* ===== PROMOCIONES ===== */
+        .promotions {
+            background: var(--beige-dark);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .promo-card {
+            background: var(--white);
+            padding: 2.2rem 1.8rem;
+            border-radius: var(--radius);
+            text-align: center;
+            border-left: 6px solid var(--gold);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .promo-card .icon {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .promo-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--red-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .promo-card p {
+            color: var(--gray);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .promo-card .promo-code {
+            display: inline-block;
+            background: var(--red-dark);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TESTIMONIOS ===== */
+        .testimonials {
+            background: var(--beige);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem 1.8rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(139, 26, 26, 0.05);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-card .stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-card .client {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-card .client img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+
+        .testimonial-card .client-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .testimonial-card .client-info span {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* ===== UBICACIÓN ===== */
+        .location {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .location .section-title {
+            color: var(--gold);
+        }
+
+        .location .section-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .location-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .location-info p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 300;
+        }
+
+        .location-info p i {
+            color: var(--gold);
+            width: 24px;
+            font-size: 1.1rem;
+        }
+
+        .location-info .hours {
+            margin-top: 1.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .location-info .hours h4 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .location-info .hours p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .map-container {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 360px;
+            border: none;
+            filter: grayscale(0.2) invert(0.05);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--black);
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+            max-width: 300px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            border-color: var(--gold);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .footer h4 {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 300;
+            font-size: 0.9rem;
+            padding: 4px 0;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 6px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.06);
+            padding-top: 1.8rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-bottom .heart {
+            color: var(--gold);
+        }
+
+        /* ===== WHATSAPP FLOTANTE ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            background: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            text-decoration: none;
+            animation: pulse-wa 2.5s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.12) rotate(-4deg);
+            box-shadow: 0 10px 45px rgba(37, 211, 102, 0.55);
+            color: #fff;
+        }
+
+        @keyframes pulse-wa {
+            0% {
+                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 50px rgba(37, 211, 102, 0.7);
+            }
+            100% {
+                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .location-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: 100vh;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(18px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 1.8rem;
+                padding: 2rem;
+                transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+                border-left: 1px solid rgba(212, 175, 55, 0.1);
+            }
+
+            .nav-menu.open {
+                right: 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                background: var(--gold);
+                color: var(--black) !important;
+                padding: 10px 32px !important;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .dish-card img {
+                height: 160px;
+            }
+
+            .dish-info {
+                padding: 1rem;
+            }
+
+            .dish-info h3 {
+                font-size: 1rem;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .carousel-btn.prev {
+                left: 8px;
+            }
+
+            .carousel-btn.next {
+                right: 8px;
+            }
+
+            .whatsapp-float {
+                width: 52px;
+                height: 52px;
+                font-size: 1.8rem;
+                bottom: 18px;
+                right: 18px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="container">
+            <a href="#hero" class="logo"><i class="fas fa-utensils"></i>Sabor<span>Capital</span></a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li role="none"><a href="#menu" role="menuitem">Menú</a></li>
+                <li role="none"><a href="#promotions" role="menuitem">Promociones</a></li>
+                <li role="none"><a href="#testimonials" role="menuitem">Testimonios</a></li>
+                <li role="none"><a href="#location" role="menuitem">Ubicación</a></li>
+                <li role="none"><a href="#contact" role="menuitem" class="nav-cta">Pedir ahora</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="badge"><i class="fas fa-star" style="margin-right:6px;"></i> Cocina de autor</div>
+            <h1>El sabor que <span class="gold-text">conquista</span></h1>
+            <p>En Sabor Capital, cada plato cuenta una historia. Ingredientes frescos, pasión y el toque inconfundible de la cocina capitalina.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary"><i class="fas fa-utensils"></i> Ver menú</a>
+                <a href="https://wa.me/573001234567?text=Hola%20Sabor%20Capital%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="btn btn-outline"><i class="fas fa-shopping-cart"></i> Pedir ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PLATOS DESTACADOS ===== -->
+    <section class="featured section-padding" id="menu">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="badge-gold"><i class="fas fa-star"></i> Destacados</span>
+                <h2 class="section-title">Platos que enamoran</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Nuestros comensales siempre vuelven por estos. ¿Te animas a probarlos?</p>
+            </div>
+            <div class="featured-grid">
+                <div class="dish-card reveal">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plato de carne" loading="lazy" />
+                    <div class="dish-info">
+                        <h3>Lomo al Trapo</h3>
+                        <p>Jugoso lomo de res con costra de hierbas, acompañado de puré de papa trufado.</p>
+                        <span class="price">$78.000</span>
+                        <br />
+                        <button class="btn-order" onclick="window.open('https://wa.me/573001234567?text=Quiero%20pedir%20Lomo%20al%20Trapo','_blank')"><i class="fas fa-bag-shopping"></i> Pedir</button>
+                    </div>
+                </div>
+                <div class="dish-card reveal">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pizza" loading="lazy" />
+                    <div class="dish-info">
+                        <h3>Pizza Capital</h3>
+                        <p>Masa artesanal, salsa de tomate, mozzarella, pepperoni y albahaca fresca.</p>
+                        <span class="price">$45.000</span>
+                        <br />
+                        <button class="btn-order" onclick="window.open('https://wa.me/573001234567?text=Quiero%20pedir%20Pizza%20Capital','_blank')"><i class="fas fa-bag-shopping"></i> Pedir</button>
+                    </div>
+                </div>
+                <div class="dish-card reveal">
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pasta" loading="lazy" />
+                    <div class="dish-info">
+                        <h3>Fettuccine al Trufo</h3>
+                        <p>Pasta fresca con crema de trufa negra, champiñones y queso parmesano.</p>
+                        <span class="price">$62.000</span>
+                        <br />
+                        <button class="btn-order" onclick="window.open('https://wa.me/573001234567?text=Quiero%20pedir%20Fettuccine%20al%20Trufo','_blank')"><i class="fas fa-bag-shopping"></i> Pedir</button>
+                    </div>
+                </div>
+                <div class="dish-card reveal">
+                    <img src="https://th.bing.com/th/id/R.655a3214a4fa5410ac72d877527de903?rik=%2bn9HC8p4o4Mt9g&riu=http%3a%2f%2ffratello.com.pe%2fwp-content%2fuploads%2f2017%2f06%2fvolcan-1.png&ehk=l2Wnu5JBWj6YCZnwmIDVbv84tOZcRuqTpzIpOmQGVIo%3d&risl=&pid=ImgRaw&r=0" alt="Postre" loading="lazy" />
+                    <div class="dish-info">
+                        <h3>Volcán de Chocolate</h3>
+                        <p>Corazón fundido de chocolate amargo, con helado de vainilla y frambuesas.</p>
+                        <span class="price">$28.000</span>
+                        <br />
+                        <button class="btn-order" onclick="window.open('https://wa.me/573001234567?text=Quiero%20pedir%20Volcán%20de%20Chocolate','_blank')"><i class="fas fa-bag-shopping"></i> Pedir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CARRUSEL ===== -->
+    <section class="carousel-section section-padding" id="gallery">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="badge-gold"><i class="fas fa-camera"></i> Galería</span>
+                <h2 class="section-title">El arte de nuestra cocina</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Un recorrido visual por nuestros platos, ambiente y momentos especiales.</p>
+            </div>
+            <div class="carousel-container reveal">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Restaurante Sabor Capital" loading="lazy" />
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Plato de carne" loading="lazy" />
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Pizza artesanal" loading="lazy" />
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Postre" loading="lazy" />
+                    </div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="nextBtn" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- ===== PROMOCIONES ===== -->
+    <section class="promotions section-padding" id="promotions">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="badge-gold"><i class="fas fa-tags"></i> Ofertas</span>
+                <h2 class="section-title">Promociones especiales</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Aprovecha nuestras ofertas y disfruta de una experiencia única a mejor precio.</p>
+            </div>
+            <div class="promo-grid">
+                <div class="promo-card reveal">
+                    <div class="icon"><i class="fas fa-wine-glass-alt"></i></div>
+                    <h3>Noche de Vinos</h3>
+                    <p>2x1 en copas de vino seleccionado con cada plato principal. Todos los jueves.</p>
+                    <span class="promo-code">VINO24</span>
+                </div>
+                <div class="promo-card reveal">
+                    <div class="icon"><i class="fas fa-pizza-slice"></i></div>
+                    <h3>Combo Familiar</h3>
+                    <p>2 pizzas grandes + 1 entrada + 1 postre por solo $79.000. Ideal para compartir.</p>
+                    <span class="promo-code">FAMILIA</span>
+                </div>
+                <div class="promo-card reveal">
+                    <div class="icon"><i class="fas fa-birthday-cake"></i></div>
+                    <h3>Postre Gratis</h3>
+                    <p>En tu cumpleaños, llévate un postre de cortesía al mostrar tu identificación.</p>
+                    <span class="promo-code">FELIZ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIOS ===== -->
+    <section class="testimonials section-padding" id="testimonials">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="badge-gold"><i class="fas fa-comment-dots"></i> Opiniones</span>
+                <h2 class="section-title">Lo que dicen nuestros comensales</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">La satisfacción de nuestros clientes es nuestra mejor carta de presentación.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>“La mejor experiencia gastronómica de la ciudad. El lomo al trapo es espectacular, y el ambiente es acogedor. Volveré sin duda.”</blockquote>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Cliente" loading="lazy" />
+                        <div class="client-info">
+                            <h4>Andrés Gómez</h4>
+                            <span>Cliente frecuente</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>“Excelente atención y una pizza que no tiene comparación. Los ingredientes son frescos y la masa es perfecta. 100% recomendado.”</blockquote>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Cliente" loading="lazy" />
+                        <div class="client-info">
+                            <h4>María Fernanda</h4>
+                            <span>Cliente habitual</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>“El volcán de chocolate es el mejor postre que he probado. El servicio es impecable, siempre atentos a los detalles.”</blockquote>
+                    <div class="client">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Cliente" loading="lazy" />
+                        <div class="client-info">
+                            <h4>Carlos Restrepo</h4>
+                            <span>Cliente desde 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== UBICACIÓN ===== -->
+    <section class="location section-padding" id="location">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="badge-gold"><i class="fas fa-map-pin"></i> Encuéntranos</span>
+                <h2 class="section-title">Visítanos</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Ven a disfrutar de nuestra cocina en un ambiente único, o pide a domicilio.</p>
+            </div>
+            <div class="location-wrapper">
+                <div class="location-info reveal">
+                    <h3><i class="fas fa-location-dot" style="color:var(--gold); margin-right:10px;"></i> Sabor Capital</h3>
+                    <p><i class="fas fa-map-pin"></i> Calle 93 # 15-45, Zona G, Bogotá</p>
+                    <p><i class="fas fa-phone"></i> +57 300 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@saborcapital.com</p>
+                    <div class="hours">
+                        <h4><i class="fas fa-clock" style="color:var(--gold); margin-right:8px;"></i> Horario de atención</h4>
+                        <p>Lunes a Jueves: 12:00 PM – 10:00 PM</p>
+                        <p>Viernes y Sábado: 12:00 PM – 12:00 AM</p>
+                        <p>Domingos: 12:00 PM – 8:00 PM</p>
+                    </div>
+                </div>
+                <div class="map-container reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.785140536699!2d-74.066294!3d4.655043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b3b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sZona%20G%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1740000000000" loading="lazy" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo"><i class="fas fa-utensils"></i>Sabor<span>Capital</span></a>
+                    <p>La cocina que celebra los sabores de la capital con ingredientes frescos y un toque de pasión.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <a href="#menu">Menú</a>
+                    <a href="#promotions">Promociones</a>
+                    <a href="#testimonials">Testimonios</a>
+                    <a href="#location">Ubicación</a>
+                    <a href="#contact">Contacto</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Pedidos</h4>
+                    <a href="https://wa.me/573001234567?text=Hola%20Sabor%20Capital%2C%20quiero%20hacer%20un%20pedido" target="_blank">WhatsApp</a>
+                    <a href="tel:+573001234567">Llamar</a>
+                    <a href="#contact">Reservas</a>
+                    <a href="#promotions">Ofertas</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>Sabor Capital</strong> · Todos los derechos reservados · Hecho con <span class="heart"><i class="fas fa-heart"></i></span> para los amantes de la buena mesa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== WHATSAPP FLOTANTE ===== -->
+    <a href="https://wa.me/573001234567?text=Hola%20Sabor%20Capital%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---- NAVBAR SCROLL ----
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 60) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // ---- HAMBURGER MENU ----
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+
+            function toggleMenu() {
+                const isOpen = navMenu.classList.toggle('open');
+                hamburger.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isOpen);
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('open')) {
+                        navMenu.classList.remove('open');
+                        hamburger.classList.remove('active');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // ---- CARRUSEL ----
+            const track = document.getElementById('carouselTrack');
+            const slides = track.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let autoPlayInterval;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('carouselDots');
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.dataset.index = i;
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            const dots = dotsContainer.querySelectorAll('span');
+
+            function goToSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                currentIndex = index;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                clearInterval(autoPlayInterval);
+                prevSlide();
+                startAutoPlay();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                clearInterval(autoPlayInterval);
+                nextSlide();
+                startAutoPlay();
+            });
+
+            function startAutoPlay() {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, 4500);
+            }
+
+            startAutoPlay();
+
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            carouselContainer.addEventListener('mouseleave', startAutoPlay);
+
+            // ---- SCROLL REVEAL ----
+            const revealElements = document.querySelectorAll('.reveal');
+
+            function checkReveal() {
+                const windowHeight = window.innerHeight;
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const revealPoint = 100;
+                    if (rect.top < windowHeight - revealPoint) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkReveal);
+            window.addEventListener('load', checkReveal);
+
+            // ---- ACTIVE NAV LINK ----
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a:not(.nav-cta)');
+
+            function updateActiveLink() {
+                let currentSection = '';
+                const scrollPos = window.pageYOffset + 100;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveLink);
+            window.addEventListener('load', updateActiveLink);
+
+        })();
+    </script>
+
+</body>
+</html>
